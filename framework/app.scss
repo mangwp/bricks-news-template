@@ -1,0 +1,386 @@
+@use 'sass:map';
+@use 'variants' as * with (
+  $breakpoints: (
+  )
+);
+
+//COLOR SYSTEM//
+//Get from Variabel at style.css//
+$primary: #244B9C; 
+$primary-light: #266eef;
+$secondary:#ef672f;
+$secondary-light:rgb(239 103 47 / 80%);
+$accent:#e3f5fe;
+$black:#000000;
+$black-light:#0c0c0c;
+$white-:#ffffff;
+$grey:#f0f0f0;
+
+$color: (
+ 'primary': #{$primary},
+ 'primary-light': #{$primary-light},
+ 'secondary': #{$secondary},
+ 'secondary-light': #{$secondary-light},
+ 'accent': #{$accent},
+ 'white': #{$white-},
+ 'black': #{$black},
+ 'black-light': #{$black-light},
+ 'grey':#{$grey},
+);
+.color {
+  @include options($color, 'responsive') using ($value) {
+    color: $value;
+  }
+}
+.bg {
+  @include options($color, 'responsive') using ($value) {
+    background-color: $value;
+  }
+}
+//ALIGN SYSTEM (TEXT-ALIGN)//
+
+$align: (
+  'left': left,
+  'right': right,
+  'center': center,
+  'justify': justify,
+);
+.text {
+  @include options($align, 'responsive') using ($value) {
+    text-align: $value;
+  }
+}
+
+//JUSTIFY CONTENT//
+
+$justify-content: (
+  'start': flex-start,
+  'end': flex-end,
+  'center': center,
+  'between': space-between,
+  'around': space-around,
+  'evenly': space-evenly,
+);
+.justify {
+  @include options($justify-content, 'responsive') using ($value) {
+    justify-content: $value;
+  }
+}
+
+//ALIGN ITEMS//
+
+$align-items: (
+  'stretch': stretch,
+  'center': center,
+  'start': flex-start,
+  'end': flex-end,
+);
+.align {
+  @include options($align-items, 'responsive') using ($value) {
+    align-items: $value;
+  }
+}
+
+
+//TYPOGRAPHY (FONT SIZE, FONR WEIGHT//
+$font-size: (
+  '8': .8rem,
+  '10': 1rem,
+  '12': 1.2rem,
+  '14': 1.4rem,
+  '16': 1.6rem,
+  '20': 2rem,
+  '24': 2.4rem,
+  '28': 2.8rem,
+  '32': 3.2rem,
+  '40': 4rem,
+  '64': 6.4rem,
+);
+
+.fs {
+  @include options($font-size, 'responsive') using ($value) {
+    font-size: $value;
+  }
+}
+
+$font-weight: (
+  '300': 300,
+  '400': 400,
+  '500': 500,
+  '600': 600,
+  '700': 700,
+);
+
+.fw {
+  @include options($font-weight, 'responsive') using ($value) {
+    font-weight: $value;
+  }
+}
+
+//SPACING (MARGIN, PADDING, GAP)//
+
+$spacing: (
+  'auto': auto,
+  '0': 0,
+  '4': .4rem,
+  '8': .8rem,
+  '10': 1rem,
+  '12': 1.2rem,
+  '14': 1.4rem,
+  '16': 1.6rem,
+  '20': 2rem,
+  '24': 2.4rem,
+  '28': 2.8rem,
+  '32': 3.2rem,
+  '40': 4rem,
+  '64': 6.4rem,
+);
+
+$margin: map.merge((
+  'auto': auto
+), $spacing);
+
+@include variants('responsive') using ($props...) {
+
+  //PADDING//
+  .pd {
+    @include options($spacing, $props...) using ($value) {
+      padding: $value;
+    }
+  }
+
+  .pdx {
+    @include options($spacing, $props...) using ($value) {
+      padding-right: $value;
+      padding-left: $value;
+    }
+  }
+
+  .pdy {
+    @include options($spacing, $props...) using ($value) {
+      padding-bottom: $value;
+      padding-top: $value;
+    }
+  }
+
+  .pdt {
+    @include options($spacing, $props...) using ($value) {
+      padding-top: $value;
+    }
+  }
+
+  .pdr {
+    @include options($spacing, $props...) using ($value) {
+      padding-right: $value;
+    }
+  }
+
+  .pdb {
+    @include options($spacing, $props...) using ($value) {
+      padding-bottom: $value;
+    }
+  }
+
+  .pdl {
+    @include options($spacing, $props...) using ($value) {
+      padding-left: $value;
+    }
+  }
+
+  //MARGIN//
+
+  .mg {
+    @include options($margin, $props...) using ($value) {
+      margin: $value;
+    }
+  }
+
+  .mgx {
+    @include options($margin, $props...) using ($value) {
+      margin-right: $value;
+      margin-left: $value;
+    }
+  }
+
+  .mgy {
+    @include options($margin, $props...) using ($value) {
+      margin-bottom: $value;
+      margin-top: $value;
+    }
+  }
+
+  .mgt {
+    @include options($margin, $props...) using ($value) {
+      margin-top: $value;
+    }
+  }
+
+  .mgr {
+    @include options($margin, $props...) using ($value) {
+      margin-right: $value;
+    }
+  }
+  .mgl {
+    @include options($margin, $props...) using ($value) {
+      margin-left: $value;
+    }
+  }
+  .mgb {
+    @include options($margin, $props...) using ($value) {
+      margin-bottom: $value;
+    }
+  }
+
+    //GAP//
+
+  .gap {
+    @include options($margin, $props...) using ($value) {
+      gap: $value;
+    }
+  }
+  .col-gap {
+    @include options($margin, $props...) using ($value) {
+      column-gap: $value;
+    }
+  }
+  .row-gap {
+    @include options($margin, $props...) using ($value) {
+      row-gap: $value;
+    }
+  }
+}
+
+//POSITION//
+
+$position: (
+  'relative': relative,
+  'absolute': absolute,
+  'fixed': fixed,
+
+);
+
+.pos {
+  @include options($position, 'responsive') using ($value) {
+    position: $value;
+  }
+}
+
+//SIZING//
+
+$width: (
+  'auto': auto,
+  '100': 100%,
+);
+
+.w {
+  @include options($width, 'responsive') using ($value) {
+    width: $value;
+  }
+}
+
+$height: (
+  'auto': auto,
+  '100': 100%,
+);
+
+.h {
+  @include options($height, 'responsive') using ($value) {
+    height: $value;
+  }
+}
+
+//Line Height
+
+$lineheight: (
+  '0': 0,
+  '13': 1.3,
+  '15': 1.5,
+  '17': 1.7,
+  '19': 1.9,
+);
+
+.l {
+  @include options($lineheight, 'responsive') using ($value) {
+    line-height: $value;
+  }
+}
+
+//FlexBOX
+
+$wrap: (
+  'wrap': wrap,
+  'nowrap': nowrap,
+);
+
+.flex {
+  @include options($wrap, 'responsive') using ($value) {
+    flex-wrap: $value;
+  }
+}
+
+$float: (
+  'left': left,
+  'right': right,
+);
+
+.float {
+  @include options($float, 'responsive') using ($value) {
+    float: $value;
+  }
+}
+
+$direction: (
+  'col': column,
+  'row': row,
+);
+
+.flex {
+  @include options($direction, 'responsive') using ($value) {
+    flex-direction: $value;
+  }
+}
+
+
+/*DISPLAY*/
+$display: (
+  'block': block,
+  'flex': flex,
+);
+
+.d{
+  @include options($display, 'responsive') using ($value) {
+    display: $value;
+  }
+}
+
+/*Z-INDEX*/
+$zindex: (
+  '0': 0,
+  '1': 1,
+  '2': 2,
+  '3': 3,
+  '4': 4,
+  '5': 5,
+);
+
+.z{
+  @include options($zindex, 'responsive') using ($value) {
+    z-index: $value;
+  }
+}
+
+/*Z-INDEX*/
+$opacity: (
+  '0': 0,
+  '10': 0.1,
+  '20': 0.2,
+  '30': 0.3,
+  '50': 0.5,
+  '100': 1,
+);
+
+.opacity{
+  @include options($opacity, 'responsive') using ($value) {
+    opacity: $value;
+  }
+}
