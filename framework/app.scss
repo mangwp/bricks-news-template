@@ -8,17 +8,20 @@
 //Get from Variabel at style.css//
 $primary: #244B9C; 
 $primary-light: #266eef;
+$primary-dark: #102247;
 $secondary:#ef672f;
 $secondary-light:rgb(239 103 47 / 80%);
 $accent:#e3f5fe;
 $black:#000000;
 $black-light:#0c0c0c;
 $white-:#ffffff;
-$grey:#f0f0f0;
-
+$grey:#9b9b9b;
+$grey-dark:#6e6e6e;
+$grey-light:#f0f0f0;
 $color: (
  'primary': #{$primary},
  'primary-light': #{$primary-light},
+ 'primary-dark': #{$primary-dark},
  'secondary': #{$secondary},
  'secondary-light': #{$secondary-light},
  'accent': #{$accent},
@@ -26,6 +29,8 @@ $color: (
  'black': #{$black},
  'black-light': #{$black-light},
  'grey':#{$grey},
+ 'grey-dark':#{$grey-dark},
+ 'grey-light':#{$grey-light},
 );
 .color {
   @include options($color, 'responsive') using ($value) {
@@ -345,6 +350,7 @@ $direction: (
 $display: (
   'block': block,
   'flex': flex,
+  'none': none,
 );
 
 .d{
@@ -369,7 +375,7 @@ $zindex: (
   }
 }
 
-/*Z-INDEX*/
+/*opacity*/
 $opacity: (
   '0': 0,
   '10': 0.1,
@@ -382,5 +388,33 @@ $opacity: (
 .opacity{
   @include options($opacity, 'responsive') using ($value) {
     opacity: $value;
+  }
+}
+
+/*Border Rdius*/
+
+$rounded: (
+  '4': 0.4,
+  'full': 9999px,
+);
+
+.rounded{
+  @include options($rounded, 'responsive') using ($value) {
+    border-radius: $value;
+  }
+}
+
+
+/*Aspcet Ration*/
+
+$aspect-ratio: (
+  '1-1': 1 / 1,
+  '4-3': 4 / 3,
+  '16-9': 16 / 9,
+);
+
+.ratio{
+  @include options($aspect-ratio, 'responsive') using ($value) {
+    aspect-ratio: $value;
   }
 }
