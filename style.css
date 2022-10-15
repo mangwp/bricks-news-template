@@ -600,3 +600,10 @@ background-color: var(--primary)!important;
     .loop-layout-a>*:first-child h3 {
         font-size: 2.4rem;
     }
+    .pagination ul { margin: 10px 0 20px; position: relative; gap:5px}
+
+    .pagination ul li a, .pagination ul li span { display: inline-block; padding: 5px 10px; border: 1px solid white; background: #f2f2f2; }
+    
+    .pagination ul li span.current , .pagination ul li a:hover { background: #fff; }
+
+    .pagination ul li span.current{ border-radius: 4px; background: #21409A; background: -moz-linear-gradient(100deg, #21409a 50%, #3f7bbd 100%); background: -webkit-linear-gradient(100deg, #21409a 50%, #3f7bbd 100%); background: linear-gradient(100deg, #21409a 50%, #3f7bbd 100%); color: #fff; }

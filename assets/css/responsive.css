@@ -1,9 +1,12 @@
 /*Table Potrait 1000px*/
 
 @media only screen and (max-width: 991px) {
-    .loop-layout-a {
+    .loop-layout-a{
         grid-template-columns: 1fr 1fr;
     }
+    .loop-layout-a>*:first-child {
+        grid-column: 1 / span 2;
+}
     .loop-layout-a>*:not(:first-child) img {
         aspect-ratio: 4/3;
     }
@@ -70,6 +73,9 @@
   /*Mobile Potrait 478px*/
 
 @media only screen and (max-width: 478px) {
+    .loop-layout-b img{
+        aspect-ratio: 4/3;
+    }
     .mp-hide {
            display: none;
     }
