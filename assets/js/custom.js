@@ -41,9 +41,19 @@
                 document.querySelectorAll( '[data-sync]' ).forEach( elm => {
                     if ( elm.dataset.sync ) {
                       const thumbs = new Splide( elm, {
+                        isNavigation: true,
                         focus  : 'center',
+                        drag: true,
+                        arrow: true,
+                        flickPower: 300,
+                        flickMaxPages: 1,
+                        updateOnMove: true,
                       } );
-                      const main   = new Splide( `#${ elm.dataset.sync }` );
+                      const main   = new Splide( `#${ elm.dataset.sync }` , {
+                        flickPower: 300,
+                        flickMaxPages: 2,
+                        updateOnMove: true,
+                      });
                       main.sync( thumbs ).mount({SlideNumber});
                       thumbs.mount();
                     }
@@ -57,30 +67,25 @@
 		setTimeout( syncCarousels, 50 );
 		
 		// Once window resized, bricks will reinit the carousels, so we still need to execute our logic one more time, must be higher than 250ms
-		window.addEventListener( "resize", ()=>{
-			setTimeout( syncCarousels, 400 );
-		});
 
 
 	//end DOMContentLoaded
 	})
     function SlideNumber( Splide, Components ) {
         const { track } = Components.Elements;
-      
         let elm;
-      
+
         function mount() {
-          elm = document.getElementById("slide-number");
-          track.parentElement.append( elm );
-      
+            elm = document.createElement( 'div' );
+            elm.classList.add("slide-number")
+            track.parentElement.insertBefore( elm, track.nextSibling );
+
           update();
           Splide.on( 'move', update );
         }
-      
         function update() {
-          elm.textContent = `${ Splide.index + 1 }/${ Splide.length }`;
+            elm.textContent = `${ Splide.index + 1 }/${ Splide.length }`;
         }
-      
         return {
           mount,
         };

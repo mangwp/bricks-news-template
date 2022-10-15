@@ -73,6 +73,7 @@
   /*Mobile Potrait 478px*/
 
 @media only screen and (max-width: 478px) {
+
     .loop-layout-b img{
         aspect-ratio: 4/3;
     }
