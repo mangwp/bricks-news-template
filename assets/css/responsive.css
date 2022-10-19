@@ -1,6 +1,12 @@
 /*Table Potrait 1000px*/
 
 @media only screen and (max-width: 991px) {
+    .loop-layout-b p {
+    -webkit-line-clamp: 2;
+    }
+    .loop-layout-b img{
+        aspect-ratio: 4/3;
+    }
     .loop-layout-a{
         grid-template-columns: 1fr 1fr;
     }
@@ -21,7 +27,37 @@
   /*Mobile Landscape 767px*/
 
 @media only screen and (max-width: 767px) {
-   
+    .loop-layout-a>*:first-child h3 {
+        font-size: 1.4rem;
+    }
+    .loop-layout-a{
+        display: flex;
+        overflow-x: scroll;
+    }
+    .loop-layout-b p{
+        display: none;
+    }
+    .loop-layout-a>*:not(:first-child) img{
+        aspect-ratio: 1/1;
+    }
+    .loop-layout-a>*{
+        width: 75vw;
+        flex-shrink: 0;
+    }
+    .loop-layout-a .content-absolute{
+                 background-color: var(--primary);
+        color: var(--white-);
+        width: 100%;
+    
+}
+.loop-layout-a img{
+    height: 100%;
+    object-fit: cover;
+}
+    .loop-layout-b p {
+        -webkit-line-clamp: 1;
+        }
+
     .flex-7-3>*:first-child {
         width:100%;
     }
@@ -73,9 +109,11 @@
   /*Mobile Potrait 478px*/
 
 @media only screen and (max-width: 478px) {
-
+    .loop-layout-a>* {
+        grid-column: 1 / span 2;
+    }
     .loop-layout-b img{
-        aspect-ratio: 4/3;
+        aspect-ratio: 1;
     }
     .mp-hide {
            display: none;

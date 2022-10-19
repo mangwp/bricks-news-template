@@ -75,3 +75,12 @@
     font-size: min(max(1.4rem, calc(1.4rem + ((1vw - 0.478rem) * 3.4602))), 2.4rem);
     min-height: 0vw;
 }
+.loop-layout-b p {
+    display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+font-size: clamp(1.2rem, calc(1.2rem + ((1vw - 0.478rem) * 0.692)), 1.4rem);
+min-height: 0vw;
+}

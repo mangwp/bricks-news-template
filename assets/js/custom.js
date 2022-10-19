@@ -24,6 +24,9 @@
 		// Define our carousel Id, please replace with your carousel element Id. NOT your CSS ID
 		const mainCarouselId = 'tgxvpe';
 		const thumbnailCarouselId = 'epeoic';
+    const heroMainId = 'znhwul';
+    const heroThumbId = 'lmoimu';
+
 
 		// Define our syncCarousels function
 		const syncCarousels = () => {
@@ -59,6 +62,57 @@
                     }
                   } ); 
 				
+
+			}
+      if( 
+				bricksData.splideInstances[heroMainId] && 
+				bricksData.splideInstances[heroThumbId]
+			) {
+			
+			
+				// I want splide to active splider when click on thumbnail carousel item
+                bricksData.splideInstances[heroMainId].destroy(); 
+				bricksData.splideInstances[heroThumbId].destroy();
+                document.querySelectorAll( '[data-sync]' ).forEach( elm => {
+                    if ( elm.dataset.sync ) {
+                      const thumbs = new Splide( elm, {
+                        isNavigation: true,
+                        focus  : 'center',
+                        drag: true,
+                        arrow: true,
+                        flickPower: 300,
+                        flickMaxPages: 1,
+                        updateOnMove: true,
+                      } );
+                      const main   = new Splide( `#${ elm.dataset.sync }` , {
+                        flickPower: 300,
+                        flickMaxPages: 2,
+                        updateOnMove: true,
+                      });
+                      main.on( 'active', Slide => {
+                        const element = Slide.slide.querySelector('.hero-heading');
+                        element.classList.add('brx-animate-fadeInUp');
+                        const elementbtnleft = Slide.slide.querySelector('.hero-btn-left');
+                        elementbtnleft.classList.add('brx-animate-fadeInLeft');
+                        const elementbtnright = Slide.slide.querySelector('.hero-btn-right');
+                        elementbtnright.classList.add('brx-animate-fadeInRight');
+                      } );
+                      main.on( 'inactive', Slide => {
+                        const element = Slide.slide.querySelector('.hero-heading');
+                        element.classList.remove('brx-animate-fadeInUp');
+                        element.setAttribute('data-animation', 'fadeInUp');
+                        const elementbtnleft = Slide.slide.querySelector('.hero-btn-left');
+                        elementbtnleft.classList.remove('brx-animate-fadeInLeft');
+                        elementbtnleft.setAttribute('data-animation', 'fadeInLeft');
+                        const elementbtnright = Slide.slide.querySelector('.hero-btn-right');
+                        elementbtnright.classList.remove('brx-animate-fadeInRight');
+                        elementbtnright.setAttribute('data-animation', 'fadeInRight');
+                      } );
+                      main.sync( thumbs ).mount();
+                      thumbs.mount();
+                    }
+                  } ); 
+
 
 			}
 		}
